@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:slicing_ui1/halaman/page_01.dart';
 import 'package:slicing_ui1/halaman/splashscreen.dart'; 
 
 void main() {
