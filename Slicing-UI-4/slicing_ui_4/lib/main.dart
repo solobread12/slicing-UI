@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+import 'package:slicing_ui_4/halaman/page01.dart';
+import 'package:slicing_ui_4/halaman/profil.dart';
+import 'package:slicing_ui_4/halaman/promo.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      ),
+      home: NavigasiBawah(),
+    );
+  }
+}
+
+class NavigasiBawah extends StatefulWidget {
+  const NavigasiBawah({super.key});
+
+  @override
+  State<NavigasiBawah> createState() => _NavigasiBawahState();
+}
+
+class _NavigasiBawahState extends State<NavigasiBawah> {
+int selectedIndex = 0;
+final List<Widget> Pages = [
+  Page01(),
+  Profil(),
+  Promo(),
+];
+void onItemTapped(int index) {
+  setState(() {
+    selectedIndex = index;
+  });
+}
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Pages[selectedIndex], 
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectedIndex,
+        onTap: onItemTapped,
+        selectedItemColor: Colors.blueAccent,
+        unselectedItemColor: Colors.grey,
+        showUnselectedLabels: true,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil"),
+          BottomNavigationBarItem(icon: Icon(Icons.discount), label: "Promo"),
+        ],
+        ),);
+  }
+}
